@@ -1,19 +1,22 @@
-// let userInput = prompt("Rock, Paper or Scissors?");
-
-let humanChoice = "rock";
+let humanChoice;
 let computerChoice;
 
 let computerScore = 0;
 let humanScore = 0;
 
+function getHumanChoice() {
+  let userInput = prompt("Rock, Paper or Scissors?");
+  return userInput.toLowerCase();
+}
+
 function getComputerChoice() {
   let randomNum = Math.random();
   if (randomNum <= 0.33) {
-    computerChoice = "rock";
+    return "rock";
   } else if (randomNum > 0.33 && randomNum <= 0.66) {
-    computerChoice = "paper";
+    return "paper";
   } else {
-    computerChoice = "scissors";
+    return "scissors";
   }
 }
 getComputerChoice();
@@ -38,4 +41,7 @@ function playRound(humanChoice, computerChoice) {
     alert("Please reload page and pick 'rock', 'paper', or 'scissors'");
   }
 }
-playRound(humanChoice, computerChoice);
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
