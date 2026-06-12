@@ -3,6 +3,9 @@
 let humanChoice = "rock";
 let computerChoice;
 
+let computerScore = 0;
+let humanScore = 0;
+
 function getComputerChoice() {
   let randomNum = Math.random();
   if (randomNum <= 0.33) {
@@ -12,6 +15,5 @@ function getComputerChoice() {
   } else {
     computerChoice = "scissors";
   }
-  console.log(computerChoice);
 }
 getComputerChoice();
