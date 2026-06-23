@@ -1,13 +1,6 @@
 let computerScore = 0;
 let humanScore = 0;
 
-function getHumanChoice() {
-  let userInput = prompt("Rock, Paper or Scissors?");
-  if (userInput !== null) {
-    return userInput.toLowerCase();
-  }
-}
-
 function getComputerChoice() {
   let randomNum = Math.random();
   if (randomNum <= 0.33) {
@@ -49,6 +42,24 @@ function playRound(humanChoice, computerChoice) {
   } else {
     alert("Please reload page and pick 'rock', 'paper', or 'scissors'");
   }
+  function declareWinner() {
+    const scores = document.querySelector(".scores");
+    const winner = document.querySelector(".gameWinner");
+    scores.textContent = `Human: ${humanScore}, Comp: ${computerScore}`;
+    if (humanScore === 5) {
+      winner.textContent = `Human Wins! Refresh page to restart!`;
+      buttons.forEach((button) => {
+        button.disabled = true;
+      });
+    }
+    if (computerScore === 5) {
+      winner.textContent = `Computer Wins! Refresh page to restart!`;
+      buttons.forEach((button) => {
+        button.disabled = true;
+      });
+    }
+  }
+  declareWinner();
 }
 
 const buttons = document.querySelectorAll("button");
@@ -57,17 +68,3 @@ buttons.forEach((button) => {
     playRound(button.id, getComputerChoice());
   });
 });
-// function playGame() {
-//   for (let i = 0; i < 5; i++) {
-//     playRound(getHumanChoice(), getComputerChoice());
-//   }
-//   console.log(`Human: ${humanScore}, Comp: ${computerScore}`);
-//   if (humanScore > computerScore) {
-//     console.log("Human Wins the Whole Game");
-//   } else if (computerScore > humanScore) {
-//     console.log("Computer Wins the Whole Game");
-//   } else {
-//     console.log("Game ends in a tie.");
-//   }
-// }
-// playGame();
