@@ -21,26 +21,30 @@ function getComputerChoice() {
 getComputerChoice();
 
 function playRound(humanChoice, computerChoice) {
-  console.log(`Human: ${humanChoice}, Comp: ${computerChoice}`);
+  const roundPicks = document.querySelector(".round");
+  const roundWinner = document.querySelector(".roundWinner");
+
+  roundPicks.textContent = `Human: ${humanChoice}, Comp: ${computerChoice}`;
+
   if (humanChoice === computerChoice) {
-    console.log("It's a tie");
+    roundWinner.textContent = "It's a tie";
   } else if (humanChoice === "rock" && computerChoice === "paper") {
-    console.log("Computer wins");
+    roundWinner.textContent = "Computer wins";
     ++computerScore;
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
-    console.log("Human wins");
+    roundWinner.textContent = "Human wins";
     ++humanScore;
   } else if (humanChoice === "paper" && computerChoice === "rock") {
-    console.log("Human wins");
+    roundWinner.textContent = "Human wins";
     ++humanScore;
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    console.log("Computer wins");
+    roundWinner.textContent = "Computer wins";
     ++computerScore;
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    console.log("Computer wins");
+    roundWinner.textContent = "Computer wins";
     ++computerScore;
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
-    console.log("Human wins");
+    roundWinner.textContent = "Human wins";
     ++humanScore;
   } else {
     alert("Please reload page and pick 'rock', 'paper', or 'scissors'");
